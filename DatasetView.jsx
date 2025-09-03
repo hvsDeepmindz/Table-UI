@@ -14,7 +14,23 @@ const DatasetView = () => {
     { header: "City", accessor: (row) => row.city },
     { header: "Country", accessor: (row) => row.country },
     { header: "Company", accessor: (row) => row.company },
-    { header: "Status", accessor: (row) => row.status },
+
+    {
+      header: "Status",
+      accessor: (row) => (
+        <span className={`px-[2rem] py-[0.5rem] rounded-lg bg-[#E9F6F0] text-[#47B881]`}>
+          {row.status}
+        </span>
+      ),
+    },
+    {
+      header: "Action",
+      accessor: () => (
+        <button className={`px-[2rem] py-[0.5rem] border border-[#FFC000] text-[#FFC000] rounded-lg cursor-pointer`}>
+          View
+        </button>
+      ),
+    },
   ];
 
   return (
@@ -24,6 +40,8 @@ const DatasetView = () => {
         columns={columns}
         data={TableDummyData}
         tooltipShow={true}
+        checkData={true}
+        tableIndex={false}
       />
     </>
   );
